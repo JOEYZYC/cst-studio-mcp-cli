@@ -1,4 +1,4 @@
-# cst-rf
+# CST Studio MCP/CLI
 
 **A local Python automation core for CST Studio Suite 2026.2**, with a CLI
 (`cst-rf`) and a stdio MCP server (`cst-rf-mcp`) sharing the same service,

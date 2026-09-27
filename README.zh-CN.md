@@ -1,4 +1,4 @@
-# cst-rf
+# CST Studio MCP/CLI
 
 **CST Studio Suite 2026.2 的本地 Python 自动化核心**，提供 `cst-rf`
 命令行与 `cst-rf-mcp` MCP stdio 服务；两个前端共用工具契约、业务逻辑、
