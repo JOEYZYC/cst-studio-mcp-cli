@@ -1,0 +1,33 @@
+name: Offline checks
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  offline:
+    runs-on: windows-latest
+    env:
+      CST_CONNECT_MODE: manual
+      CST_AUTO_LAUNCH: "0"
+      CST_ALLOW_HIGH_RISK: "0"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install project and test dependencies
+        run: python -m pip install -e ".[dev]"
+      - name: Check dependencies
+        run: python -m pip check
+      - name: Lint
+        run: ruff check .
+      - name: Check formatting
+        run: ruff format --check .
+      - name: Type-check
+        run: mypy src tests
+      - name: Run tests without CST or solver
+        run: pytest -m "not live and not solver"

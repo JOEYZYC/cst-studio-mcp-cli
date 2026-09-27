@@ -1,0 +1,11 @@
+name: cst-rf-mcp
+channels:
+  - defaults
+dependencies:
+  - python=3.12.9=h14ffc60_0
+  - pip
+  - pip:
+      - -e .[dev]
+variables:
+  CST_CONNECT_MODE: manual
+  CST_AUTO_LAUNCH: "0"

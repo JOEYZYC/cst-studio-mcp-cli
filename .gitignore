@@ -1,0 +1,44 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.cst-work/
+# Separate sanitized Git history for public publication (never nest in source history).
+.release/
+# Local research draft: links to separately cloned reference repositories and
+# machine-specific review notes. Prepare a self-contained public edition first.
+OPEN_SOURCE_COMPARISON.md
+
+# tooling caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# --- local secrets / machine-specific config ---
+.env
+*.local.toml
+
+# --- CST runtime working dirs (CST_WORK_DIR contents) ---
+# 绝不提交 CST 工程、结果与控制台文件；这些属于运行产物，不是源码。
+scratch/
+runs/
+exports/
+output/
+*.cst
+*.cst.bak
+*.log
+*.jsonl
+
+# --- audit log ---
+audit/
+
+# --- editors / OS ---
+.idea/
+Thumbs.db
+desktop.ini

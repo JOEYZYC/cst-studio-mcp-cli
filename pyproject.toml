@@ -1,0 +1,52 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "cst-rf"
+version = "0.1.0.dev0"
+description = "Safe local CST Studio Suite 2026.2 automation core with CLI and MCP frontends"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+license = "Apache-2.0"
+authors = [{ name = "JOEYCH" }]
+dependencies = [
+  "anyio>=4.5,<5",
+  "jsonschema>=4.20,<5",
+  "mcp==1.29.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "mypy>=1.11",
+  "pytest>=8,<9",
+  "pytest-asyncio>=0.24,<1",
+  "ruff>=0.9",
+]
+
+[project.scripts]
+cst-rf = "cst_rf.frontends.cli:main"
+cst-rf-mcp = "cst_rf.frontends.mcp_server:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/cst_rf"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+markers = [
+  "live: requires a user-started CST Studio Suite instance",
+  "solver: starts or controls a CST solver",
+]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "UP"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+packages = ["cst_rf"]
